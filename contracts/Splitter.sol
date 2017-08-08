@@ -34,6 +34,25 @@ function splitt() payable {
 	}
 }
 
+// payable use only when receiving money
+// allow to wihdraw money only for the specific users
+function withdraw()  {
+
+	require(accounts[msg.sender] > 0);
+
+	uint value = accounts[msg.sender];
+	
+// zero out the sender value
+	accounts[msg.sender] = 0;
+// transfer to user
+	msg.sender.transfer(value);
+
+
+
+
+
+}
+
 function showBalance(address person) constant returns(uint) {
 
 	return accounts[person];
